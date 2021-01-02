@@ -3,8 +3,16 @@ import flask as fl
 # numpy for numerical work.
 import numpy as np
 # pandas for dataframes
+import pandas as pd
+import matplotlib as plt
+from flask import jsonify
+import tensorflow as tf
 
 
+  
+
+
+ 
 
 
 # jsonfy??
