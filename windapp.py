@@ -7,13 +7,7 @@ import pandas as pd
 import matplotlib as plt
 from flask import jsonify
 import tensorflow as tf
-
-
-  
-
-
- 
-
+from keras.models import load_model
 
 # jsonfy??
 

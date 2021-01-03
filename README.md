@@ -9,3 +9,26 @@ predicted power values based on speed values sent as HTTP requests.
 
 To enhance your submission, you might consider developing and comparing more than
 one model.
+
+# Wind Power prediction app.
+
+# Linux
+```bash
+export FLASK_APP=windapp.py
+python3 -m flask run
+```
+
+# Windows
+```bash
+set FLASK_APP=windapp.py
+python -m flask run
+```
+
+```bash
+docker build . -t windapp-image
+docker run --name windapp-container -d -p 5000:5000 windapp-image
+```
+
+https://towardsdatascience.com/wind-energy-trade-with-deep-learning-time-series-forecasting-580bd41f163
+https://machinelearningmastery.com/start-here/
+https://www.kdnuggets.com/2018/05/complete-guide-convnet-tensorflow-flask-restful-python-api.html

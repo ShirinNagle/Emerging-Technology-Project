@@ -15,13 +15,17 @@
   </head>
   <body>
     <h1>Hello, from windapp index.html!</h1>
+
     <div class="container">
         <div class="row">
           <div class="col-sm">
+            <!-- Input For Receiving Query to Machine Learning model -->
             <label for="inputdefault">Enter a wind speed value between 0.3 and 24.499 and click predict button</label>
+            <form action="{{ url_for('predict')}}"method="post">
             <input class="form-control" id="inputdefault" type="text">
             <br>
             <button type="button" class="btn btn-success" id="uniform-button">Predict</button>
+          </form>
             <br>
           </div>
         </div>
@@ -30,6 +34,7 @@
             <br>
             <label for="output">The predicited power output is:</label>
             <input class="form-control" id="output" type="text" placeholder="Random number here.." readonly>
+            {{ prediction_text }}
             
           </div>
           <div class="col-sm">
