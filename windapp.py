@@ -2,10 +2,7 @@
 import flask as fl
 # numpy for numerical work.
 import numpy as np
-# pandas for dataframes - though maynot use data frames
-import pandas as pd
-# may not use matplotlib either
-import matplotlib as plt
+import json
 from flask import jsonify, request
 import tensorflow as tf
 from tensorflow.keras.models import load_model
@@ -21,7 +18,7 @@ from markupsafe import escape #remove after testing
 # Create a new web app. creating a new app in memory
 app = fl.Flask(__name__)
 # load model
-model = load_model('wind_model.h5')
+model = load_model('./wind_model.h5')
 # possibly used for validation
 EXPECTED = {
 "speed":{"min":0.0,"max":25.0},
@@ -30,32 +27,29 @@ EXPECTED = {
 
 
 # Add root route.
-@app.route("/", methods=["POST"]) # @app is a decorator
+@app.route("/") # @app is a decorator
 def home():
- 
   return app.send_static_file('index.html')# sends a web page to home page
 
-# Add uniform route.
-@app.route('/api/uniform') # api returns json
-def uniform():
-  return {"value": np.random.uniform()}# return a dictionary
-
-# Add normal route.
-@app.route('/api/normal')
-def normal():
-  return {"value": np.random.normal()}# key value pair
-
-
 # Add prediction route.
-@app.route('/api/predict', methods =['POST'])
+@app.route('/predict', methods =['POST'])
 def predict():
+  data={"success":False}
   #get data from post request
-  data = request.get_json()
-  df = pd.DataFrame(str(data['text']), columns=['power'])
-  print (df.head())
-  pred = model.predict(data_df=df)
-  print(pred)
-  return jsonify(pred['wind_model'], [0])
+  #data = request.get_json()
+  reqData = request.form
+  if(reqData == None):
+    reqData = request.form
+  if(reqData != None):
+    readValue = float(reqData['value'])
+    store_value = np.array([readValue])
+    x = model.predict(store_value)
+    list = x.tolist()
+    json_string = json.dumps(list)
+    data["response"] = json_string
+    data["success"] = True
+  return fl.jsonify(data)
+  
 
   #return {"value": np.random.normal()}# key value pair
 

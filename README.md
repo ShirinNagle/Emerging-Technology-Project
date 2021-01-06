@@ -34,3 +34,23 @@ https://machinelearningmastery.com/start-here/
 https://www.kdnuggets.com/2018/05/complete-guide-convnet-tensorflow-flask-restful-python-api.html
 https://www.tutorialspoint.com/flask/flask_templates.htm
 https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+https://towardsdatascience.com/serving-a-machine-learning-model-via-rest-api-5a4b38c02e90
+https://www.statworx.com/ch/blog/how-to-build-a-machine-learning-api-with-python-and-flask/
+
+https://www.kdnuggets.com/2019/01/build-api-machine-learning-model-using-flask.html
+
+
+@prediction_app.route("/v1/inference/random_forest_model", methods=['POST'])
+def inference():
+    if request.method == 'POST':
+        json_data = request.get_json()
+        _logger.info(f'Inputs: {json_data}')
+
+        result = predict(input_data=json_data)
+        _logger.info(f'Outputs: {result}')
+
+        predictions = result.get('predictions')[0]
+        version = result.get('version')
+
+        return jsonify({'predictions': predictions,
+                        'version': version})
