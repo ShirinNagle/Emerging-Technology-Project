@@ -12,45 +12,41 @@ one model.
 
 # Wind Power prediction app.
 
-# Linux
+Included in this repository is a jupyter notebook, titled windPower.ipynb. This notebook was used to train a wind power output prediction model. 
+A web API titled windapp.py. Also included two datasets, one with the original data and the other with all 0's removed. Some models were created from the data set with no 0's, this was in the interest of comparison. It was quite difficult to bring the loss down to a low number to improve accuracy with random occurrences of 0 throughout the dataset. The 0's accounted for almost 10% of the data set, which has a bearing on what the predicted output is. The model produced with the dataset with no 0's was not used in the Web API, the model that had the least amount of loss was used as the model for the Web API.
+
+
+
+## Instructions
+
+### Linux
 ```bash
 export FLASK_APP=windapp.py
 python3 -m flask run
 ```
 
-# Windows
+### Windows
 ```bash
 set FLASK_APP=windapp.py
 python -m flask run
 ```
-
+### Docker
 ```bash
 docker build . -t windapp-image
 docker run --name windapp-container -d -p 5000:5000 windapp-image
 ```
 
-https://towardsdatascience.com/wind-energy-trade-with-deep-learning-time-series-forecasting-580bd41f163
-https://machinelearningmastery.com/start-here/
-https://www.kdnuggets.com/2018/05/complete-guide-convnet-tensorflow-flask-restful-python-api.html
-https://www.tutorialspoint.com/flask/flask_templates.htm
-https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
-https://towardsdatascience.com/serving-a-machine-learning-model-via-rest-api-5a4b38c02e90
-https://www.statworx.com/ch/blog/how-to-build-a-machine-learning-api-with-python-and-flask/
 
-https://www.kdnuggets.com/2019/01/build-api-machine-learning-model-using-flask.html
+## How to run Jupyter Notebook[1].
+1. Ensure Anaconda is installed on your computer.
+2. Clone this repository to your computer.
+3. Navigate to where you have cloned the repository, using cmd(Windows)
+4. Type jupyter notebook on the cmd, this will launch a new browser window or new tab.
+5. When started, the Jupyter Notebook App can access only files within its start-up folder (including any sub-folder). 
+No configuration is necessary if you place your notebooks in your home folder or subfolders.
+6. Double click on the file titled jupyter-tasks.ipynb
+7. The notebook should open, with all tasks displayed and the work involved in proving these tasks.
+8. For further information please see link below.
 
-
-@prediction_app.route("/v1/inference/random_forest_model", methods=['POST'])
-def inference():
-    if request.method == 'POST':
-        json_data = request.get_json()
-        _logger.info(f'Inputs: {json_data}')
-
-        result = predict(input_data=json_data)
-        _logger.info(f'Outputs: {result}')
-
-        predictions = result.get('predictions')[0]
-        version = result.get('version')
-
-        return jsonify({'predictions': predictions,
-                        'version': version})
+#### References
+[1] Running the Jupyter Notebook; https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html
