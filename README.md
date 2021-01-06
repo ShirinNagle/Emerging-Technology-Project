@@ -32,3 +32,5 @@ docker run --name windapp-container -d -p 5000:5000 windapp-image
 https://towardsdatascience.com/wind-energy-trade-with-deep-learning-time-series-forecasting-580bd41f163
 https://machinelearningmastery.com/start-here/
 https://www.kdnuggets.com/2018/05/complete-guide-convnet-tensorflow-flask-restful-python-api.html
+https://www.tutorialspoint.com/flask/flask_templates.htm
+https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API

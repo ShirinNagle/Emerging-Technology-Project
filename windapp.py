@@ -2,12 +2,13 @@
 import flask as fl
 # numpy for numerical work.
 import numpy as np
-# pandas for dataframes
+# pandas for dataframes - though maynot use data frames
 import pandas as pd
+# may not use matplotlib either
 import matplotlib as plt
 from flask import jsonify
 import tensorflow as tf
-from keras.models import load_model
+
 
 # jsonfy??
 
