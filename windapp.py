@@ -7,7 +7,7 @@ from flask import jsonify, request
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 
-from markupsafe import escape #remove after testing
+
 
 
 # jsonfy??
@@ -18,7 +18,7 @@ from markupsafe import escape #remove after testing
 # Create a new web app. creating a new app in memory
 app = fl.Flask(__name__)
 # load model
-model = load_model('./wind_model.h5')
+model = load_model('./wind.h5')
 # possibly used for validation
 EXPECTED = {
 "speed":{"min":0.0,"max":25.0},
