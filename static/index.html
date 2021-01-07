@@ -20,17 +20,18 @@
         <div class="row">
           <div class="col-sm">
             <!-- Input For Receiving Query to Machine Learning model -->
-          <label>Enter a value between 0.3 and 24.5</label>
-            <input class="form-control" id="input" 
+          <label for= "speedInput">Enter a value between 0.3 and 24.5</label>
+            <input class="form-control" id="input_no" 
            type="text" placeholder="Enter a value between 0.3 and 24.5"></input>
 
             <br>
-            <button type="button" class="btn btn-success" id="predict-button">Predict</button>
+            <button type="button" class="btn btn-success" id="prediction_btn">Predict</button>
           
             <br>
           </div>
         </div>
-        <h4 id="prediction"></h4>
+        <h3 id="predicted_output"></h3>
+        <div></div>
         <div class="row">
           <div class="col-sm">
             <br>
@@ -45,22 +46,22 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     
     <script>
-        // Adapted from stack overflow posts.
-        $("#predict-button").click(()=> {
-            value = jQuery("#input").val();
-            formData = {value:value};
-            
+        // Adapted from stack overflow posts.W3 Schools. https://jquery.com/
+        // This function is not working, either my code is incorrect or the model isn't loading correctly
+        // no errors on console..ran out of time to debug and try other methods
+        $("#prediction_btn").click(() =>{
+        value = jQuery("#input_no").val();
+        formData = {value: value};
         
-            $.ajax("/predict", {
-              type: "POST",
-              data: formData,
-              success: function(data, status, xhr){
-                var result = data[['response']]
-                $("#prediction").text('The predicted wind power is : ${result}');
-              },
-            
-            });
+        $.ajax("/predict", {
+          type: "POST",
+          data: formData,
+          success: function(data, status, xhr){
+            var result = data[['response']]
+            $("#predicted_output").text('The Predicted Power OutPut is: ${result}')
+          },
         });
+      });
 
     </script>
   </body>

@@ -1,6 +1,8 @@
 # Emerging-Technology-Project
 Repository for Emerging Technology Project
-## Instructions
+
+## Project Specifications
+
 In this project you must create a web service that uses machine learning to make predictions
 based on the data set powerproduction available on Moodle. The goal is to
 produce a model that accurately predicts wind turbine power output from wind speed
@@ -16,8 +18,7 @@ Included in this repository is a jupyter notebook, titled windPower.ipynb. This 
 A web API titled windapp.py. Also included two datasets, one with the original data and the other with all 0's removed. Some models were created from the data set with no 0's, this was in the interest of comparison. It was quite difficult to bring the loss down to a low number to improve accuracy with random occurrences of 0 throughout the dataset. The 0's accounted for almost 10% of the data set, which has a bearing on what the predicted output is. The model produced with the dataset with no 0's was not used in the Web API, the model that had the least amount of loss was used as the model for the Web API.
 
 
-
-## Instructions
+## Instructions to run Web Service
 
 ### Linux
 ```bash
